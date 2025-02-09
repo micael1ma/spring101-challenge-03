@@ -1,16 +1,25 @@
 package com.micael1ma.desafio03.dto;
 
 import com.micael1ma.desafio03.entities.Client;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Positive;
 
 import java.time.LocalDate;
 
 public class ClientDTO {
 
     private Long id;
+
+    @NotBlank(message = "Campo requerido")
     private String name;
     private String cpf;
     private Double income;
+
+    @PastOrPresent(message = "A data de nascimento não pode ser futura")
     private LocalDate birthDate;
+
+    @Positive(message = "O numero de filhos deve ser postivo")
     private Integer children;
 
     public ClientDTO(){
